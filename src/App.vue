@@ -5,33 +5,12 @@
       <div class="col-12">
         <div class="row">
           <div class="col-8">
-            <div class="row">
-              <div class="col-md-3">
-                <figure class="card card-product">
-                  <div class="img-wrap">
-                    <img class="img-fluid" src="https://via.placeholder.com/320x240.png" />
-                  </div>
-                  <figcaption class="info-wrap">
-                    <h6 class="title text-dots">
-                      <a href="#">Good item name</a>
-                    </h6>
-                    <div class="action-wrap">
-                      <button type="button" class="btn btn-success btn-sm">Add to Cart</button>
-
-                      <p>130 $</p>
-                      <!-- price-wrap.// -->
-                    </div>
-                    <!-- action-wrap -->
-                  </figcaption>
-                </figure>
-                <!-- card // -->
-              </div>
-            </div>
+            <inventory @newItemAdded="addCartItem" :items="items"></inventory>
           </div>
 
           <div class="col-4">
-            <h4>carts</h4>
-            <cart></cart>
+            <div class="alert alert-warning" role="alert">In Your Carts !</div>
+            <cart @removeFromCart="removeItemFromCart" :cart_items="cart_items"></cart>
           </div>
         </div>
       </div>
@@ -41,9 +20,29 @@
 
 <script>
 import navbar from "./components/navbar";
+import inventory from "./components/inventory";
 import cart from "./components/cart";
+import data from "./../data.js";
+
 export default {
-  components: { navbar, cart }
+  components: { navbar, inventory, cart },
+  data() {
+    return {
+      items: [],
+      cart_items: []
+    };
+  },
+  mounted() {
+    this.items = data;
+  },
+  methods: {
+    addCartItem(item) {
+      this.cart_items.push(item);
+    },
+    removeItemFromCart(index) {
+      this.cart_items.splice(index, 1);
+    }
+  }
 };
 </script>
 
@@ -52,7 +51,6 @@ export default {
   border-radius: 3px 3px 0 0;
   overflow: hidden;
   position: relative;
-  height: 115px;
   text-align: center;
 }
 .card-product .img-wrap img {
