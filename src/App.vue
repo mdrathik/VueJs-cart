@@ -10,10 +10,7 @@
 
           <div class="col-4">
             <div class="alert alert-warning" role="alert">In Your Carts !</div>
-            <cart
-              @removeFromCart="removeItemFromCart"
-              :cart_items="cart_items"
-            ></cart>
+            <cart @removeFromCart="removeItemFromCart" :cart_items="cart_items"></cart>
           </div>
         </div>
       </div>

@@ -1,17 +1,14 @@
 <template>
   <ul class="list-group">
-    <li
-      v-for="(cart_item, index) in cart_items"
-      :key="index"
-      class="list-group-item"
-    >
-      {{ cart_item.name }} - {{ cart_item.price }}
-      <span @click="removeFromCart(index)" class="badge badge-danger">x</span>
+    <li v-for="(cart_item,index) in cart_items" :key="index" class="list-group-item">
+      {{cart_item.name}} - {{cart_item.price}}
+      <span
+        @click="removeFromCart(index)"
+        class="badge badge-danger"
+      >x</span>
     </li>
     <div class="list-group">
-      <a href="#" class="list-group-item active"
-        >Total Price : {{ totalPrice }}</a
-      >
+      <a href="#" class="list-group-item active">Total Price : {{totalPrice}}</a>
     </div>
   </ul>
 </template>
