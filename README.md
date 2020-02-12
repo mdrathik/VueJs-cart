@@ -1,4 +1,4 @@
-# VueJs-Cart
+# VueJs-Cart with JwPagination
 
 ## Project setup
 
@@ -6,7 +6,7 @@
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and hot-reloads for development & run on browser via localhost http://localhost:8080/
 
 ```
 yarn serve
