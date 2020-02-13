@@ -1,4 +1,4 @@
-# VueJs-Cart with JwPagination
+# VueJs-Cart, Search with JwPagination
 
 demo - https://focused-sinoussi-7430da.netlify.com/
 

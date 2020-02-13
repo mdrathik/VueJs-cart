@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <navbar></navbar>
+    <navbar @search="search"></navbar>
     <div style="margin-top:30px;" class="container">
       <div class="col-12">
         <div class="row">
@@ -10,10 +10,7 @@
 
           <div class="col-4">
             <div class="alert alert-warning" role="alert">In Your Carts !</div>
-            <cart
-              @removeFromCart="removeItemFromCart"
-              :cart_items="cart_items"
-            ></cart>
+            <cart @removeFromCart="removeItemFromCart" :cart_items="cart_items"></cart>
           </div>
         </div>
       </div>
@@ -39,6 +36,11 @@ export default {
     this.items = data;
   },
   methods: {
+    search(keyword) {
+      this.items = data.filter(item => {
+        return item.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
+      });
+    },
     addCartItem(item) {
       this.cart_items.push(item);
     },

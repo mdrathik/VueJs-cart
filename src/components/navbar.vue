@@ -12,17 +12,16 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">VueJs Cart</a>
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">
-            Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+      <a class="navbar-brand" href="/">VueJs Cart</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+      <form @submit.prevent="search" class="form-inline my-2 my-lg-0">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          v-model="keyword"
+          aria-label="Search"
+        />
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
@@ -30,7 +29,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      keyword: ""
+    };
+  },
+  methods: {
+    search() {
+      this.$emit("search", this.keyword);
+    }
+  }
+};
 </script>
 
 <style>
